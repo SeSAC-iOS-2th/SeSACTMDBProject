@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WxP-Qs-tcw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IYK-jc-yLL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,8 +31,13 @@
                             <constraint firstItem="x0S-Qy-hlo" firstAttribute="leading" secondItem="OeE-eY-Zy6" secondAttribute="leading" id="PLE-gU-yyi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oHY-wo-aJz"/>
+                    <navigationItem key="navigationItem" id="oHY-wo-aJz">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="list.bullet" catalog="system" id="rMl-89-nTB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="hOR-mq-zJj"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="leftBarButton" destination="rMl-89-nTB" id="8Fh-78-kzF"/>
+                        <outlet property="rightBarButton" destination="hOR-mq-zJj" id="QIa-Qg-d0j"/>
                         <outlet property="tableView" destination="x0S-Qy-hlo" id="Mx3-zF-Ijr"/>
                     </connections>
                 </viewController>
@@ -57,8 +63,91 @@
             </objects>
             <point key="canvasLocation" x="-422" y="-38"/>
         </scene>
+        <!--NetflixTMDB View Controller-->
+        <scene sceneID="Fx4-0I-qSH">
+            <objects>
+                <viewController id="IYK-jc-yLL" customClass="NetflixTMDBViewController" customModule="SeSACTMDBProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9ei-Eg-AeL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Kcr-P1-fQh">
+                                <rect key="frame" x="0.0" y="60" width="414" height="802"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NetflixTMDBTableViewCell" rowHeight="199" id="3Fx-AT-Qc0" customClass="NetflixTMDBTableViewCell" customModule="SeSACTMDBProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="199"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Fx-AT-Qc0" id="DAc-gC-e8p">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="199"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1W-BA-WT9">
+                                                    <rect key="frame" x="8" y="16" width="398" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6dT-AI-ArP">
+                                                    <rect key="frame" x="0.0" y="44.5" width="414" height="146.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iBM-YN-RHO">
+                                                        <size key="itemSize" width="128" height="128"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="vRg-5q-Of9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Oxq-Uo-7uX">
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </collectionViewCellContentView>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6dT-AI-ArP" firstAttribute="leading" secondItem="DAc-gC-e8p" secondAttribute="leading" id="Dzf-N6-yYw"/>
+                                                <constraint firstAttribute="bottom" secondItem="6dT-AI-ArP" secondAttribute="bottom" constant="8" id="YdT-jr-gpR"/>
+                                                <constraint firstItem="6dT-AI-ArP" firstAttribute="top" secondItem="t1W-BA-WT9" secondAttribute="bottom" constant="8" id="eUk-IU-SxH"/>
+                                                <constraint firstItem="t1W-BA-WT9" firstAttribute="leading" secondItem="DAc-gC-e8p" secondAttribute="leading" constant="8" id="kuy-cd-Irz"/>
+                                                <constraint firstAttribute="trailing" secondItem="6dT-AI-ArP" secondAttribute="trailing" id="pwK-ty-yRg"/>
+                                                <constraint firstItem="t1W-BA-WT9" firstAttribute="top" secondItem="DAc-gC-e8p" secondAttribute="top" constant="16" id="qmb-Ue-5cc"/>
+                                                <constraint firstAttribute="trailing" secondItem="t1W-BA-WT9" secondAttribute="trailing" constant="8" id="zQl-E8-FEW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentCollectionView" destination="6dT-AI-ArP" id="dyQ-NO-lnR"/>
+                                            <outlet property="tableViewTitleLabel" destination="t1W-BA-WT9" id="hue-Ug-Gxk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UFq-Gs-1If"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UFq-Gs-1If" firstAttribute="bottom" secondItem="Kcr-P1-fQh" secondAttribute="bottom" id="2zH-d2-zbg"/>
+                            <constraint firstItem="Kcr-P1-fQh" firstAttribute="top" secondItem="UFq-Gs-1If" secondAttribute="top" constant="16" id="Jkl-sQ-Pox"/>
+                            <constraint firstItem="UFq-Gs-1If" firstAttribute="trailing" secondItem="Kcr-P1-fQh" secondAttribute="trailing" id="fv6-Y4-fzy"/>
+                            <constraint firstItem="Kcr-P1-fQh" firstAttribute="leading" secondItem="UFq-Gs-1If" secondAttribute="leading" id="qDP-wf-GL2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Kcr-P1-fQh" id="GFU-MK-cBW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bfy-Od-sdd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-423.1884057971015" y="709.82142857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
